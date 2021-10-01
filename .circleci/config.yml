@@ -9,9 +9,11 @@ jobs:
       - checkout
       - browser-tools/install-chrome
       - browser-tools/install-chromedriver
-      - run: bundle install
       - run:
-          name: Save test results
+          name: Install dependencies
+          command: bundle install
+      - run:
+          name: Run test
           command: |
             mkdir -p ~/cucumber
             bundle exec cucumber --format junit --out ~/cucumber/junit.xml
