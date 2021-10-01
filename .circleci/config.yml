@@ -13,14 +13,14 @@ jobs:
             unzip chromedriver_linux64.zip
             ./chromedriver
           background: true
-#      - run: bundle install
-#      - run:
-#          name: Save test results
-#          command: |
-#            mkdir -p ~/cucumber
-#            bundle exec cucumber --format junit --out ~/cucumber/junit.xml
-#          when: always
-#      - store_test_results:
-#          path: ~/cucumber
-#      - store_artifacts:
-#          path: ~/cucumber
+      - run: bundle install
+      - run:
+          name: Save test results
+          command: |
+            mkdir -p ~/cucumber
+            bundle exec cucumber --format junit --out ~/cucumber/junit.xml
+          when: always
+      - store_test_results:
+          path: ~/cucumber
+      - store_artifacts:
+          path: ~/cucumber
