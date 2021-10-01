@@ -6,8 +6,12 @@ jobs:
       - image: cimg/ruby:3.0.2-browsers
     steps:
       - checkout
-      - run: which chromedriver
-      - run: whereis chromedriver
+      - run:
+          name: install chromedriver
+          command: |
+            wget https://chromedriver.storage.googleapis.com/94.0.4606.41/chromedriver_linux64.zip
+            unzip chromedriver_linux64.zip
+            ./chromedriver
 #      - run: bundle install
 #      - run:
 #          name: Save test results
