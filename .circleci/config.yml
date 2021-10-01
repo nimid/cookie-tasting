@@ -6,14 +6,16 @@ jobs:
       - image: cimg/ruby:3.0.2-browsers
     steps:
       - checkout
-      - run: bundle install
-      - run:
-          name: Save test results
-          command: |
-            mkdir -p ~/cucumber
-            bundle exec cucumber --format junit --out ~/cucumber/junit.xml
-          when: always
-      - store_test_results:
-          path: ~/cucumber
-      - store_artifacts:
-          path: ~/cucumber
+      - run: which chromedriver
+      - run: whereis chromedriver
+#      - run: bundle install
+#      - run:
+#          name: Save test results
+#          command: |
+#            mkdir -p ~/cucumber
+#            bundle exec cucumber --format junit --out ~/cucumber/junit.xml
+#          when: always
+#      - store_test_results:
+#          path: ~/cucumber
+#      - store_artifacts:
+#          path: ~/cucumber
