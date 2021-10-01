@@ -1,34 +1,16 @@
-version: '2.1'
+version: 2.1
 orbs:
   browser-tools: circleci/browser-tools@1.2.2
 jobs:
   test:
     docker:
-      - image: 'cimg/node:13.12-browser'
+      - image: cimg/ruby:3.0.2-browsers
     steps:
       - browser-tools/install-chrome
       - browser-tools/install-chromedriver
+      - checkout
       - run:
           command: |
             google-chrome --version
             chromedriver --version
           name: Check install
-      - checkout
-      - run:
-      name: install chromedriver
-      command: |
-        wget https://chromedriver.storage.googleapis.com/94.0.4606.41/chromedriver_linux64.zip
-        unzip chromedriver_linux64.zip
-        ./chromedriver
-      background: true
-      - run: bundle install
-      - run:
-          name: Save test results
-          command: |
-            mkdir -p ~/cucumber
-            bundle exec cucumber --format junit --out ~/cucumber/junit.xml
-          when: always
-      - store_test_results:
-          path: ~/cucumber
-      - store_artifacts:
-          path: ~/cucumber
