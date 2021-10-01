@@ -6,7 +6,7 @@ jobs:
       - image: cimg/ruby:3.0.2
     steps:
       - checkout
-      - ruby/install-deps
+      - run: bundle install
       - run:
           name: Save test results
           command: |
