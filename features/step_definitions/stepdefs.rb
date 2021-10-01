@@ -24,7 +24,7 @@ When(/^user login$/) do
   button = '//button[text()="รับทราบ"]'
   driver.find_element(:xpath, button).click unless driver.find_elements(:xpath, button).empty?
 
-  wait = Selenium::WebDriver::Wait.new(timeout: 10)
+  wait = Selenium::WebDriver::Wait.new(timeout: 20)
   wait.until { driver.title.start_with? 'จัดการแบนเนอร์คุกกี้ | Cookie Wow' }
   @page_title = driver.title
 end
