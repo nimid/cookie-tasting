@@ -36,5 +36,9 @@ jobs:
       with:
         ruby-version: ${{ matrix.ruby-version }}
         bundler-cache: true
+    - name: Install Google Chrome and ChromeDriver
+      run: |
+        chmod +x ./github/workflows/sh.sh
+        ./github/workflows/sh.sh
     - name: Run tests
       run: bundle exec cucumber
