@@ -27,6 +27,7 @@ jobs:
         env:
           user_email: ${{ secrets.USER_EMAIL }}
           user_password: ${{ secrets.USER_PASSWORD }}
+          DISPLAY: :99
         run: |
           google-chrome --headless --no-sandbox --disable-dev-shm-usage
           chromedriver --url-base=/wd/hub &
