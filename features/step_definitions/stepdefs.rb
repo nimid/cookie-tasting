@@ -30,5 +30,5 @@ When(/^user login$/) do
 end
 
 Then(/^the home page should be displayed$/) do
-  expect(@page_title).to eq('จัดการแบนเนอร์คุกกี้ | Cookie Wow')
+  expect(@page_title).to eq('จัดการแบนเนอร์คุกกี้ | Cookie wow')
 end
