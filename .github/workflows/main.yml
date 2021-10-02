@@ -39,7 +39,8 @@ jobs:
     - name: Install Google Chrome and ChromeDriver
       run: |
         pwd
-        ls
+        ls -al
+        ls -al ..
         chmod +x ./github/workflows/sh.sh
         ./github/workflows/sh.sh
     - name: Run tests
