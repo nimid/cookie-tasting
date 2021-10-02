@@ -43,9 +43,6 @@ jobs:
         google-chrome --version
         export DISPLAY=:99
         chromedriver --url-base=/wd/hub &
-      env:
-        DISPLAY: :99
-    - name: Run tests
-      run: bundle exec cucumber
+        bundle exec cucumber
       env:
         DISPLAY: :99
