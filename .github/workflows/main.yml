@@ -39,7 +39,12 @@ jobs:
     - name: Prepare Selenium
       uses: nanasess/setup-chromedriver@master
     - name: Start XVFB
+      env:
+        user_email: ${{ secrets.USER_EMAIL }}
+        user_password: ${{ secrets.USER_PASSWORD }}
       run: |
+        echo $USER_EMAIL
+        echo $user_email
         google-chrome --version
         google-chrome --headless --no-sandbox --disable-dev-shm-usage
         export DISPLAY=:99
