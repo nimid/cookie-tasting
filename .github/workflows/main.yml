@@ -9,32 +9,14 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v2
-
-      - name: Run a one-line script
-        run: echo Hello, world!
-
-      - name: Run a multi-line script
-        run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
-
   test:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        ruby-version: ['3.0.2']
-
     steps:
     - uses: actions/checkout@v2
     - name: Set up Ruby
       uses: ruby/setup-ruby@v1
       with:
-        ruby-version: ${{ matrix.ruby-version }}
+        ruby-version: 3.0.2
         bundler-cache: true
     - name: Prepare Selenium
       uses: nanasess/setup-chromedriver@master
