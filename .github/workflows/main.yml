@@ -20,8 +20,10 @@ jobs:
           ruby-version: 3.0.2
           bundler-cache: true
 
-      - name: Run Cucumber
+      - name: Set up ChromeDrive
         uses: nanasess/setup-chromedriver@master
+
+      - name: Run Cucumber
         env:
           user_email: ${{ secrets.USER_EMAIL }}
           user_password: ${{ secrets.USER_PASSWORD }}
