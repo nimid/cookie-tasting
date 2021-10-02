@@ -1,29 +1,23 @@
 name: CI
-
 on:
   push:
     branches: [ main ]
   pull_request:
     branches: [ main ]
   workflow_dispatch:
-
 jobs:
   test:
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v2
-
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: 3.0.2
           bundler-cache: true
-
       - name: Set up ChromeDrive
         uses: nanasess/setup-chromedriver@master
-
-      - name: Run Cucumber
+      - name: Run test
         env:
           user_email: ${{ secrets.USER_EMAIL }}
           user_password: ${{ secrets.USER_PASSWORD }}
