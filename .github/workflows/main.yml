@@ -22,6 +22,10 @@ jobs:
 
     - name: Set up ChromeDrive
       uses: nanasess/setup-chromedriver@master
+
+    - name: Start XVFB
+      env:
+        DISPLAY: :99
       run: |
         google-chrome --headless --no-sandbox --disable-dev-shm-usage
         export DISPLAY=:99
@@ -32,6 +36,5 @@ jobs:
       env:
         user_email: ${{ secrets.USER_EMAIL }}
         user_password: ${{ secrets.USER_PASSWORD }}
-        DISPLAY: :99
       run: |
         bundle exec cucumber
