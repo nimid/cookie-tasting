@@ -12,23 +12,25 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+    - uses: actions/checkout@v2
 
-      - name: Set up Ruby
-        uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: 3.0.2
-          bundler-cache: true
+    - name: Set up Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: 3.0.2
+        bundler-cache: true
 
-      - name: Set up ChromeDrive
-        uses: nanasess/setup-chromedriver@master
+    - name: Set up ChromeDrive
+      env:
+        DISPLAY: :99
+      run: |
+        google-chrome --headless --no-sandbox --disable-dev-shm-usage
+        export DISPLAY=:99
+        chromedriver --url-base=/wd/hub &
 
-      - name: Run Cucumber
-        env:
-          user_email: ${{ secrets.USER_EMAIL }}
-          user_password: ${{ secrets.USER_PASSWORD }}
-          DISPLAY: :99
-        run: |
-          google-chrome --headless --no-sandbox --disable-dev-shm-usage
-          chromedriver --url-base=/wd/hub &
-          bundle exec cucumber
+    - name: Run Cucumber
+      env:
+        user_email: ${{ secrets.USER_EMAIL }}
+        user_password: ${{ secrets.USER_PASSWORD }}
+      run: |
+        bundle exec cucumber
