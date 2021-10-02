@@ -18,17 +18,15 @@ jobs:
       with:
         ruby-version: 3.0.2
         bundler-cache: true
-    - name: Prepare Selenium
+    - name: Set up ChromeDrive
       uses: nanasess/setup-chromedriver@master
     - name: Start XVFB
       env:
         user_email: ${{ secrets.USER_EMAIL }}
         user_password: ${{ secrets.USER_PASSWORD }}
         DISPLAY: :99
+    - name: Run Cucumber
       run: |
-        echo $USER_EMAIL
-        echo $user_email
-        google-chrome --version
         google-chrome --headless --no-sandbox --disable-dev-shm-usage
         export DISPLAY=:99
         chromedriver --url-base=/wd/hub &
