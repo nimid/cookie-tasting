@@ -21,9 +21,9 @@ jobs:
         ruby-version: 3.0.2
         bundler-cache: true
 
-    - name: Setup C
-    - uses: nanasess/setup-chromedriver@master
-    - run: |
+    - name: Setup ChromeDriver
+      uses: nanasess/setup-chromedriver@master
+      run: |
         export DISPLAY=:99
         chromedriver --url-base=/wd/hub &
 
